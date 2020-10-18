@@ -1,31 +1,34 @@
 package com.thepolo49.apigestion.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity // This tells Hibernate to make a table out of this class
+
+@Entity
 public class User {
+
   @Id
-  @GeneratedValue(strategy=GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
-  
-  @Column(nullable = false, unique = true, length = 50)
-  private String publicId;
 
-  @Column(nullable = false, length = 50)
-  private String name;
+  @Column(unique = true, nullable = false)
+  private String username;
 
-  @Column(nullable = false, unique = true, length = 50)
+  @Column(unique = true, nullable = false)
   private String email;
-  
+
   @Column(nullable = false)
-  private Boolean admin;
-  
-  @Column(nullable = false, length = 100)
   private String password;
+
+  @ElementCollection(fetch = FetchType.EAGER)
+  List<Role> roles;
 
   public Integer getId() {
     return id;
@@ -35,12 +38,12 @@ public class User {
     this.id = id;
   }
 
-  public String getName() {
-    return name;
+  public String getUsername() {
+    return username;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setUsername(String username) {
+    this.username = username;
   }
 
   public String getEmail() {
@@ -51,29 +54,20 @@ public class User {
     this.email = email;
   }
 
-public String getPublicId() {
-	return publicId;
-}
+  public String getPassword() {
+    return password;
+  }
 
-public void setPublicId(String publicId) {
-	this.publicId = publicId;
-}
+  public void setPassword(String password) {
+    this.password = password;
+  }
 
-public Boolean getAdmin() {
-	return admin;
-}
+  public List<Role> getRoles() {
+    return roles;
+  }
 
-public void setAdmin(Boolean admin) {
-	this.admin = admin;
-}
+  public void setRoles(List<Role> roles) {
+    this.roles = roles;
+  }
 
-public String getPassword() {
-	return password;
-}
-
-public void setPassword(String password) {
-	this.password = password;
-}
-  
-  
 }
