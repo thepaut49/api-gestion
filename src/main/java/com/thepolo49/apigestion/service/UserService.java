@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.thepolo49.apigestion.exception.CustomException;
 import com.thepolo49.apigestion.model.User;
+import com.thepolo49.apigestion.dao.CompanyRepository;
 import com.thepolo49.apigestion.dao.UserRepository;
 import com.thepolo49.apigestion.security.JwtTokenProvider;
 
@@ -22,6 +23,9 @@ public class UserService {
 
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private CompanyRepository companyRepository;
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;

@@ -2,48 +2,82 @@ package com.thepolo49.apigestion.dto;
 
 import java.util.List;
 
+import com.thepolo49.apigestion.model.Company;
 import com.thepolo49.apigestion.model.Role;
 
 public class UserResponseDTO {
 
-  private Integer id;
+	private Integer id;
 
-  private String username;
+	private String username;
 
-  private String email;
+	private String email;
 
-  List<Role> roles;
+	private String password;
 
-  public Integer getId() {
-    return id;
-  }
+	List<Role> roles;
+	
+    List<Company> companies;
+	
+	private int version;
+	
+	/*** getter/setter ***/
 
-  public void setId(Integer id) {
-    this.id = id;
-  }
+	public Integer getId() {
+		return id;
+	}
 
-  public String getUsername() {
-    return username;
-  }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-  public void setUsername(String username) {
-    this.username = username;
-  }
+	public String getUsername() {
+		return username;
+	}
 
-  public String getEmail() {
-    return email;
-  }
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
-  public void setEmail(String email) {
-    this.email = email;
-  }
+	public String getEmail() {
+		return email;
+	}
 
-  public List<Role> getRoles() {
-    return roles;
-  }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-  public void setRoles(List<Role> roles) {
-    this.roles = roles;
-  }
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
+	public List<Company> getCompanies() {
+		return companies;
+	}
+
+	public void setCompanies(List<Company> companies) {
+		this.companies = companies;
+	}
+
 
 }
