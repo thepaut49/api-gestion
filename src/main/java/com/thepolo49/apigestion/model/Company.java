@@ -35,8 +35,17 @@ public class Company implements Serializable {
 	@Column(nullable = false)
 	private String legalForm;
 
-	@Column(length = 255)
-	private String address;
+	@Column(length = 50)
+	private String addressLine1;
+	
+	@Column(length = 50)
+	private String addressLine2;
+	
+	@Column(length = 50)
+	private String addressLine3;
+	
+	@Column(length = 50)
+	private String addressLine4;
 	
 	@Column(length = 50)
 	private String email;
@@ -108,15 +117,66 @@ public class Company implements Serializable {
 		this.version = version;
 	}
 
+	public String getAddressLine1() {
+		return addressLine1;
+	}
+
+	public void setAddressLine1(String addressLine1) {
+		this.addressLine1 = addressLine1;
+	}
+
+	public String getAddressLine2() {
+		return addressLine2;
+	}
+
+	public void setAddressLine2(String addressLine2) {
+		this.addressLine2 = addressLine2;
+	}
+
+	public String getAddressLine3() {
+		return addressLine3;
+	}
+
+	public void setAddressLine3(String addressLine3) {
+		this.addressLine3 = addressLine3;
+	}
+
+	public String getAddressLine4() {
+		return addressLine4;
+	}
+
+	public void setAddressLine4(String addressLine4) {
+		this.addressLine4 = addressLine4;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
 	/*** Constructeurs ***/
-	public Company(String siren, String siret, String companyname, String legalForm, String address, String email, String phone,
+	public Company(String siren, String siret, String companyname, String legalForm, String addressLine1, String addressLine2, String addressLine3, String addressLine4, String email, String phone,
 			List<Associate> associates) {
 		super();
 		this.siren = siren;
 		this.siret = siret;
 		this.companyname = companyname;
 		this.legalForm = legalForm;
-		this.address = address;
+		this.addressLine1 = addressLine1;
+		this.addressLine2 = addressLine2;
+		this.addressLine3 = addressLine3;
+		this.addressLine4 = addressLine4;
 		this.email = email;
 		this.phone = phone; 
 		this.associates = associates;

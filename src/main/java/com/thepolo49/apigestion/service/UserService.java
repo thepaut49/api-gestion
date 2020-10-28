@@ -1,6 +1,6 @@
 package com.thepolo49.apigestion.service;
 
-import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -12,10 +12,9 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.thepolo49.apigestion.dao.UserRepository;
 import com.thepolo49.apigestion.exception.CustomException;
 import com.thepolo49.apigestion.model.User;
-import com.thepolo49.apigestion.dao.CompanyRepository;
-import com.thepolo49.apigestion.dao.UserRepository;
 import com.thepolo49.apigestion.security.JwtTokenProvider;
 
 @Service
@@ -23,9 +22,6 @@ public class UserService {
 
 	@Autowired
 	private UserRepository userRepository;
-	
-	@Autowired
-	private CompanyRepository companyRepository;
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -73,6 +69,17 @@ public class UserService {
 
 	public String refresh(String username) {
 		return jwtTokenProvider.createToken(username, userRepository.findByUsername(username).getRoles());
+	}
+	
+	public String wasureta(User pUser) {
+		User user = userRepository.findByEmail(pUser.getEmail());
+		if (user == null ) {
+			throw new CustomException("The user doesn't exist", HttpStatus.NOT_FOUND);
+		}
+		String newPassword = UUID.randomUUID().toString();
+		user.setPassword(passwordEncoder.encode(newPassword));
+		userRepository.save(user);
+		return "Un mail contenant le nouveau mot de passe a été envoyé à l'adresse suivante : " + pUser.getEmail();
 	}
 
 }

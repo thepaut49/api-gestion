@@ -27,8 +27,17 @@ public class Person implements Serializable {
 	@Column(length = 20)
 	private String firstName;
 	
-	@Column(length = 255)
-	private String Address;
+	@Column(length = 50)
+	private String addressLine1;
+	
+	@Column(length = 50)
+	private String addressLine2;
+	
+	@Column(length = 50)
+	private String addressLine3;
+	
+	@Column(length = 50)
+	private String addressLine4;
 	
 	@Column(length = 50)
 	private String email;
@@ -65,12 +74,36 @@ public class Person implements Serializable {
 		this.firstName = firstName;
 	}
 
-	public String getAddress() {
-		return Address;
+	public String getAddressLine1() {
+		return addressLine1;
 	}
 
-	public void setAddress(String address) {
-		Address = address;
+	public void setAddressLine1(String addressLine1) {
+		this.addressLine1 = addressLine1;
+	}
+
+	public String getAddressLine2() {
+		return addressLine2;
+	}
+
+	public void setAddressLine2(String addressLine2) {
+		this.addressLine2 = addressLine2;
+	}
+
+	public String getAddressLine3() {
+		return addressLine3;
+	}
+
+	public void setAddressLine3(String addressLine3) {
+		this.addressLine3 = addressLine3;
+	}
+
+	public String getAddressLine4() {
+		return addressLine4;
+	}
+
+	public void setAddressLine4(String addressLine4) {
+		this.addressLine4 = addressLine4;
 	}
 
 	public String getEmail() {
