@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.thepolo49.apigestion.exception.CustomException;
 import com.thepolo49.apigestion.model.Person;
-import com.thepolo49.apigestion.dao.PersonRepository;
+import com.thepolo49.apigestion.repository.PersonRepository;
 
 @Service
 public class PersonService {
@@ -19,7 +19,7 @@ public class PersonService {
 
 
 	public Person createPerson(Person person) {
-		if (!personRepository.existsByFirstNameAndFamilyNameAndEmail(person.getFirstName(), person.getFamilyName(), person.getEmail()) ) {
+		if (!personRepository.existsByFirstNameAndFamilyNameAndEmail(person.getFirstName(), person.getFamilyName(), person.getContactInformation().getEmail()) ) {
 			person = personRepository.save(person);
 			return person;
 		}

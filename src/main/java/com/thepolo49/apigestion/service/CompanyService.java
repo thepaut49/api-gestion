@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.thepolo49.apigestion.exception.CustomException;
 import com.thepolo49.apigestion.model.Company;
-import com.thepolo49.apigestion.dao.CompanyRepository;
+import com.thepolo49.apigestion.repository.CompanyRepository;
 
 @Service
 public class CompanyService {

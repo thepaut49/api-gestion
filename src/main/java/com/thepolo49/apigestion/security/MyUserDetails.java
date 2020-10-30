@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.thepolo49.apigestion.model.User;
-import com.thepolo49.apigestion.dao.UserRepository;
+import com.thepolo49.apigestion.repository.UserRepository;
 
 @Service
 public class MyUserDetails implements UserDetailsService {

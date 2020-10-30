@@ -16,9 +16,9 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.thepolo49.apigestion.dao.UserRepository;
 import com.thepolo49.apigestion.exception.CustomException;
 import com.thepolo49.apigestion.model.User;
+import com.thepolo49.apigestion.repository.UserRepository;
 import com.thepolo49.apigestion.security.JwtTokenProvider;
 
 @Service

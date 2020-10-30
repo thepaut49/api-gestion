@@ -1,4 +1,4 @@
-package com.thepolo49.apigestion.dao;
+package com.thepolo49.apigestion.repository;
 
 import javax.transaction.Transactional;
 
