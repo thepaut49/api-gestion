@@ -2,12 +2,9 @@ package com.thepolo49.apigestion.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Version;
 
 @Embeddable
 public class AssociateId implements Serializable {

@@ -15,10 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.thepolo49.apigestion.dto.CompanyDTO;
 import com.thepolo49.apigestion.dto.UserDataDTO;
 import com.thepolo49.apigestion.dto.UserResponseDTO;
-import com.thepolo49.apigestion.model.Company;
 import com.thepolo49.apigestion.model.User;
 import com.thepolo49.apigestion.service.UserService;
 

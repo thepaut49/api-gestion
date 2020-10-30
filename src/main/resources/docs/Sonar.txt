@@ -1,0 +1,2 @@
+# Commande maven pour lancer l'analyse sonar du projet
+mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar

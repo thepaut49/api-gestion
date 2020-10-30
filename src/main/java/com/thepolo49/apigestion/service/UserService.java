@@ -5,7 +5,11 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
+import org.springframework.mail.MailException;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
@@ -28,6 +32,13 @@ public class UserService {
 
 	@Autowired
 	private JwtTokenProvider jwtTokenProvider;
+	
+	@Autowired
+    private JavaMailSender javaMailSender;
+	
+	
+	@Value("${spring.mail.username}")
+	private String sender;
 
 	@Autowired
 	private AuthenticationManager authenticationManager;
@@ -79,6 +90,20 @@ public class UserService {
 		String newPassword = UUID.randomUUID().toString();
 		user.setPassword(passwordEncoder.encode(newPassword));
 		userRepository.save(user);
+		
+		SimpleMailMessage msg = new SimpleMailMessage();
+        msg.setTo(user.getEmail());
+        msg.setFrom(sender);
+
+        msg.setSubject("Gestion entreprise : Récupération des identifiants");
+        msg.setText("Bonjour "+ user.getUsername() +",\n Votre nouveau mot de passe est : " + newPassword);
+
+        try {
+        	javaMailSender.send(msg);
+        } catch ( MailException exception) {
+        	exception.printStackTrace();
+        	throw new CustomException("Erreur lors de l'envoi du mail !", HttpStatus.NOT_FOUND);
+        }
 		return "Un mail contenant le nouveau mot de passe a été envoyé à l'adresse suivante : " + pUser.getEmail();
 	}
 
