@@ -1,5 +1,6 @@
 package com.thepolo49.apigestion.service;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -48,5 +49,9 @@ public class CompanyService {
 			throw new CustomException("L'entreprise n'existe pas", HttpStatus.NOT_FOUND);
 		}
 		return company.get();
+	}
+	
+	public List<Company> findAll() {
+		return companyRepository.findAll();
 	}
 }

@@ -1,10 +1,14 @@
 package com.thepolo49.apigestion.controller;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +26,7 @@ import com.thepolo49.apigestion.service.UserService;
 
 @RestController
 @RequestMapping("/users")
+@CrossOrigin(maxAge = 3600)
 public class UserController {
 
   @Autowired
@@ -70,6 +75,16 @@ public class UserController {
   @PutMapping("/wasureta")
   public String wasureta( @RequestBody UserDataDTO user) {
     return userService.wasureta(modelMapper.map(user, User.class));
+  }
+  
+  @GetMapping("/all")
+  @PreAuthorize("hasRole('ROLE_ADMIN')")
+  public List<User> getAllUsers() {
+	  List<User> users = userService.findAll();
+	  return users
+			  .stream()
+			  .map(user -> modelMapper.map(user, User.class))
+			  .collect(Collectors.toList());
   }
 
 }

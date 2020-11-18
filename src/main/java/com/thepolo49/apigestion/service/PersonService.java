@@ -1,5 +1,6 @@
 package com.thepolo49.apigestion.service;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -48,5 +49,9 @@ public class PersonService {
 			throw new CustomException("Cette personne n'existe pas !", HttpStatus.NOT_FOUND);
 		}
 		return person.get();
+	}
+	
+	public List<Person> findAll() {
+		return personRepository.findAll();
 	}
 }

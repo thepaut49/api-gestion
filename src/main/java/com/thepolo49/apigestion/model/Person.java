@@ -33,6 +33,13 @@ public class Person implements Serializable {
 	@JoinColumn(name = "contact_information_id")
 	private ContactInformation contactInformation;
 	
+	@Column(length = 20)
+	// morale ou physique
+	private String personType;
+	
+	@Column(length = 20)
+	private String companyName;
+	
 	@Version
 	private int version;
 	
@@ -60,6 +67,22 @@ public class Person implements Serializable {
 
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
+	}
+
+	public String getPersonType() {
+		return personType;
+	}
+
+	public void setPersonType(String personType) {
+		this.personType = personType;
+	}
+
+	public String getCompanyName() {
+		return companyName;
+	}
+
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
 	}
 
 	public int getVersion() {

@@ -1,5 +1,6 @@
 package com.thepolo49.apigestion.service;
 
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -105,6 +106,10 @@ public class UserService {
         	throw new CustomException("Erreur lors de l'envoi du mail !", HttpStatus.NOT_FOUND);
         }
 		return "Un mail contenant le nouveau mot de passe a été envoyé à l'adresse suivante : " + pUser.getEmail();
+	}
+	
+	public List<User> findAll() {
+		return userRepository.findAll();
 	}
 
 }

@@ -20,8 +20,8 @@ import com.thepolo49.apigestion.model.Company;
 import com.thepolo49.apigestion.service.CompanyService;
 
 @RestController
-@RequestMapping("/companies")
-public class CompanyController {
+@RequestMapping("/companies/{companyId}/invoice")
+public class InvoiceController {
   
   @Autowired
   private CompanyService companyService;
